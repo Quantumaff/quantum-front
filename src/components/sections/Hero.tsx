@@ -103,26 +103,30 @@ export function Hero() {
           {/* Headline block, anchored to the bottom.
             Subtitle and QUANTUM share the same left start (as in the design). */}
           <div className="min-w-0 px-5 lg:relative lg:top-[calc(60*var(--u))] lg:px-[calc(70*var(--u))]">
-            <div className="flex items-start gap-[28px] lg:gap-[calc(22*var(--u))]">
-              <span className="mt-1.5 block size-[15px] shrink-0 rounded-[4px] bg-foreground lg:mt-[calc(8*var(--u))] lg:size-[calc(17*var(--u))] lg:rounded-[calc(4*var(--u))]" />
-              <p className="text-[24px] leading-[1.1] font-bold tracking-[-0.02em] lg:text-[calc(32*var(--u))]">
+            <div className="flex items-start gap-[38px] lg:gap-[calc(22*var(--u))]">
+              <span className="mt-[8px] block size-[15px] shrink-0 rounded-[4px] bg-foreground lg:mt-[calc(8*var(--u))] lg:size-[calc(17*var(--u))] lg:rounded-[calc(4*var(--u))]" />
+              <p className="text-[28px] leading-[1.1] font-bold tracking-[-0.02em] lg:text-[calc(32*var(--u))]">
                 Навчальний центр
                 <br />
                 афілейт маркетингу
               </p>
             </div>
 
-            {/* QUANTUM wordmark as SVG: textLength makes it fill the container
-              width exactly, identically on mobile and desktop. Explicit
-              width/height attrs set the intrinsic aspect so w-full/h-auto scale
-              it by width (not height). */}
+            {/* QUANTUM wordmark as SVG: textLength stretches the glyphs to a
+              fixed advance width, and the viewBox is cropped to the resulting
+              ink box (x 11..1098) so `preserveAspectRatio="none"` maps the
+              letters flush to the element edges — no side-bearing gap, so the Q
+              lines up with the bullet above. The aspect ratio sets the mobile
+              height; desktop pins the height instead, because there the h1 box
+              is inset (ml/w below) to hold the wordmark at its Figma position. */}
             <h1
               aria-label="QUANTUM"
-              className="mt-[28px] w-full min-w-0 overflow-hidden lg:mt-[calc(29*var(--u))] lg:-ml-[calc(18*var(--u))] lg:w-[calc(100%+18*var(--u))]"
+              className="mt-[18px] w-full min-w-0 overflow-hidden lg:mt-[calc(29*var(--u))] lg:ml-[calc(14*var(--u))] lg:w-[calc(100%-25*var(--u))]"
             >
               <svg
-                viewBox="0 27 1097 175"
-                className="block aspect-[1097/172] w-full mix-blend-difference"
+                viewBox="11 27 1087 175"
+                preserveAspectRatio="none"
+                className="block aspect-[1097/172] w-full mix-blend-difference lg:h-[calc(282*var(--u))]"
                 aria-hidden="true"
               >
                 <text
@@ -140,7 +144,7 @@ export function Hero() {
           </div>
 
           {/* Bottom category labels */}
-          <div className="mt-[13vh] flex w-full items-center justify-between p-5 text-[11px] text-muted lg:mt-[calc(24*var(--u))] lg:px-[calc(70*var(--u))] lg:pb-[calc(24*var(--u))] lg:text-[calc(12*var(--u))]">
+          <div className="mt-[82px] flex w-full items-center justify-between p-5 text-[11px] text-muted lg:mt-[calc(24*var(--u))] lg:px-[calc(70*var(--u))] lg:pb-[calc(24*var(--u))] lg:text-[calc(12*var(--u))]">
             {CATEGORIES.map((label, i) => (
               <span
                 key={label}
